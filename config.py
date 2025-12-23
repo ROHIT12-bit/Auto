@@ -7,4 +7,4 @@ class Config:
     MONGO_URI = getenv("MONGO_URI", "mongodb+srv://pokemonchannel098:yaE7BvFwWIXdb3HQ@cluster0.gdr57.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DB_NAME = getenv("DB_NAME", "AutoApproveDB")
     OWNER_ID = int(getenv("OWNER_ID", "8367080346"))  # optional, but useful for admin checks
-    ADMINS = list(map(int, os.getenv("ADMINS", "").split()))
+    ADMINS = list(map(int, os.getenv("ADMINS", "8367080346").split()))
