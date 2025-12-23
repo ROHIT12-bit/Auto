@@ -1,0 +1,27 @@
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import asyncio
+import os
+from config import ADMINS
+
+@Client.on_message(filters.command("restart") & filters.private)
+async def restart_bot(client, message):
+    if message.from_user.id not in ADMINS:
+        return await message.reply("<code>🛑 Bᴀʙʏ ɴᴏ, ʏᴏᴜ ʟᴀᴄᴋ ᴛʜᴇ ᴄʀᴏᴡɴ ғᴏʀ ᴛʜɪꜱ ᴏʀᴅᴇʀ 👑</code>")
+
+    # Step 1: Send dramatic goodbye 😭
+    bye = await message.reply_photo(
+        photo="https://i.ibb.co/mHTMbmM/630b4ff5ccf9.jpg",
+        caption="<b>💔 Rᴇsᴛᴀʀᴛɪɴɢ... Dᴏɴ'ᴛ ʏᴏᴜ ᴅᴀʀᴇ ᴍɪss ᴍᴇ ʙᴀʙʏ!</b>",
+        parse_mode="html",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("🛠️ Dᴇᴠ", url="https://t.me/Otakukart7"),
+             InlineKeyboardButton("❌ Cʟᴏꜱᴇ", callback_data="close")]
+        ])
+    )
+
+    # Step 2: Delay for drama 😏
+    await asyncio.sleep(3)
+
+    # Step 3: Restart process (real reload)
+    os.execvp("python", ["python", "-m", "bot"])
