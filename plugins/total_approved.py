@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import asyncio
-from config import ADMINS
+from config import Config
+ADMINS = Config.ADMINS
 from database import get_all_approved_users
 
 @Client.on_message(filters.command("total_approved") & filters.private)
